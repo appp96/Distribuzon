@@ -357,11 +357,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               )}
             />
           </div>
-          <Button disabled={loading} className="ml-auto" type="submit">
-            {action}
-          </Button>
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button className="ml-auto mr-5" type="submit">
             <Link href="./inicio">Cancelar</Link>
+          </Button>
+          <Button disabled={loading} className="ml-5" type="submit">
+            {action}
           </Button>
         </form>
       </Form>

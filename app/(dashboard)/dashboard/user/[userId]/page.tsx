@@ -5,15 +5,19 @@ import React from "react";
 
 export default function Page() {
   const breadcrumbItems = [
-    { title: "User", link: "/dashboard/user" },
-    { title: "Create", link: "/dashboard/user/create" },
+    { title: "Almacén", link: "/dashboard/almacen" },
+    { title: "Alta articulo", link: "/dashboard/almacen/alta" },
   ];
   return (
     <ScrollArea className="h-full">
       <div className="flex-1 space-y-4 p-5">
         <BreadCrumb items={breadcrumbItems} />
         <ProductForm
-          categories={[
+          categorias={[
+            { _id: "shirts", name: "shirts" },
+            { _id: "pants", name: "pants" },
+          ]}
+          unidad={[
             { _id: "shirts", name: "shirts" },
             { _id: "pants", name: "pants" },
           ]}
