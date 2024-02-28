@@ -1,5 +1,6 @@
 import { Icons } from "@/components/icons";
 import { NavItem, SidebarNavItem } from "@/types";
+import { Warehouse } from "lucide-react";
 
 export type User = {
   id: number;
@@ -95,7 +96,7 @@ export const users: User[] = [
 export type Employee = {
   id: number;
   first_name: string;
-  last_name: string;
+  last_name: string; 
   email: string;
   phone: string;
   gender: string;
@@ -111,12 +112,30 @@ export type Employee = {
   profile_picture?: string | null; // Profile picture can be a string (URL) or null (if no picture)
 };
 
+export type Almacen = {
+  id: number;
+  city?: string;
+  zipcode: string;
+  status: "Active";
+  name: string;
+  company: string;
+  role: string;
+  verified: boolean;
+  profile_picture?: string | null; // Profile picture can be a string (URL) or null (if no picture)
+};
+
 export const navItems: NavItem[] = [
   {
     title: "Dashboard",
     href: "/dashboard",
     icon: "dashboard",
     label: "Dashboard",
+  },
+  {
+    title: "Almacén",
+    href: "/dashboard/almacen",
+    icon: "pizza",
+    label: "Almacén",
   },
   {
     title: "User",
@@ -143,9 +162,9 @@ export const navItems: NavItem[] = [
     label: "kanban",
   },
   {
-    title: "Login",
+    title: "Logout",
     href: "/",
     icon: "login",
-    label: "login",
+    label: "logout",
   },
 ];

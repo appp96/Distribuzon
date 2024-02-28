@@ -42,7 +42,7 @@ export function DataTable<TData, TValue>({
   console.log("value", table.getFilteredSelectedRowModel()); */
 
   return (
-    <>
+    <> 
       <Input
         placeholder={`Search ${searchKey}...`}
         value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}

@@ -151,7 +151,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const triggerImgUrlValidation = () => form.trigger("imgUrl");
 
   return (
-    <>
+    <> 
       {/* <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -182,7 +182,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name="imgUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Imagenes</FormLabel>
+                <FormLabel>Imágenes</FormLabel>
                 <FormControl>
                   <FileUpload
                     onChange={field.onChange}
