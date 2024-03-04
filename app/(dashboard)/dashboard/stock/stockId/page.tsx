@@ -1,19 +1,19 @@
 import BreadCrumb from "@/components/breadcrumb";
-import { EmployeeForm } from "@/components/forms/employee-form";
+import { StockForm } from "@/components/forms/stock-form";
 import React from "react";
 
 export default function Page() {
   const breadcrumbItems = [
-    { title: "Empleados", link: "/dashboard/employee" },
-    { title: "Crear", link: "/dashboard/employee/crear" },
+    { title: "Stock", link: "/dashboard/stock" },
+    { title: "Alta de stock", link: "/dashboard/stock/alta" },
   ];
   return (
     <div className="flex-1 space-y-4 p-8">
       <BreadCrumb items={breadcrumbItems} />
-      <EmployeeForm
-        categories={[
-          { _id: "tarjeta", name: "tarjeta" },
-          { _id: "certificado", name: "certificado" },
+      <StockForm
+        unidad={[
+          { _id: "pieza", name: "pieza" },
+          { _id: "caja", name: "caja" },
         ]}
         initialData={null}
         key={null}

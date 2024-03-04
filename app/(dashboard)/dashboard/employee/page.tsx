@@ -2,7 +2,7 @@ import BreadCrumb from "@/components/breadcrumb";
 import { UserClient } from "@/components/tables/employee-tables/client";
 import { empleados } from "@/constants/data";
 
-const breadcrumbItems = [{ title: "Employee", link: "/dashboard/employee" }];
+const breadcrumbItems = [{ title: "Empleados", link: "/dashboard/employee" }];
 export default function page() {
   return (
     <>

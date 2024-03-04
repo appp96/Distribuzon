@@ -25,8 +25,8 @@ export const columns: ColumnDef<Taller>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
-    header: "ID",
+    accessorKey: "no",
+    header: "NO",
   },
   {
     accessorKey: "codigo",

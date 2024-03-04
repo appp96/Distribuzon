@@ -1,17 +1,17 @@
 "use client";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Stock } from "@/constants/data";
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
-import { Almacen } from "@/constants/data";
-import { Checkbox } from "@/components/ui/checkbox";
 
-export const columns: ColumnDef<Almacen>[] = [
+export const columns: ColumnDef<Stock>[] = [
   {
     id: "select",
     header: ({ table }) => (
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Selecionar todo"
+        aria-label="Seleccionar todo"
       />
     ),
     cell: ({ row }) => (
@@ -24,45 +24,53 @@ export const columns: ColumnDef<Almacen>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+  /*
+  id: 1,
+    codigo: "TM-2024-02756",
+    fecha: "12/01/2024",
+    noParte: "11008528",
+    cliente: "TYG",
+    referencia: "F3280",
+    prducto: "Panel",
+    tipo: "Salida",
+    cantidad: 6000,
+    unidad: "Pieza",
+  */
   {
     accessorKey: "no",
     header: "NO",
   },
   {
-    accessorKey: "codigo",
-    header: "CODIGO",
-  },
-  {
-    accessorKey: "fecha",
-    header: "FECHA",
-  },
-  {
     accessorKey: "noParte",
-    header: "NO PARTE",
+    header: "NO.PARTE",
+  },
+  {
+    accessorKey: "nombre",
+    header: "NOMBRE",
   },
   {
     accessorKey: "cliente",
     header: "CLIENTE",
   },
   {
-    accessorKey: "referencia",
-    header: "REFERENCIA",
+    accessorKey: "precioCompra",
+    header: "PRECIO COMPRA",
   },
   {
-    accessorKey: "producto",
-    header: "PRODUCTO",
+    accessorKey: "precioVenta",
+    header: "PRECIO VENTA",
   },
   {
-    accessorKey: "tipo",
-    header: "TIPO",
-  },
-  {
-    accessorKey: "cantidad",
-    header: "CANTIDAD",
+    accessorKey: "stock",
+    header: "STOCK",
   },
   {
     accessorKey: "unidad",
     header: "UNIDAD",
+  },
+  {
+    accessorKey: "edoStock",
+    header: "ESTADO STOCK",
   },
   {
     id: "acciones",

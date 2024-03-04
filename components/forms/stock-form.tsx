@@ -42,38 +42,37 @@ const ImgSchema = z.object({
 });
 export const IMG_MAX_LIMIT = 3;
 const formSchema = z.object({
-  id:z.coerce.number(),
-  name: z
+  idProducto:z
+  .string()
+  .min(6, { message: "El idProducto debe de tener al menos 6 dígitos" }),
+  noParte: z
     .string()
-    .min(3, { message: "El nombre debe de tener al menos 3 dígitos" }),
+    .min(6, { message: "El número de parte debe de tener al menos 6 dígitos" }),
   imgUrl: z
     .array(ImgSchema)
     .max(IMG_MAX_LIMIT, { message: "Sólo puedes subir 3 imagenes" })
     .min(1, { message: "Tienes que subir al menos 1 imagen." }),
-  codigo: z
+  nombre: z
     .string()
-    .min(6, { message: "El código debe de tener al menos 6 dígitos" }),
-  descripcion: z
+    .min(5, { message: "El nombre debe de tener al menos 5 dígitos" }),
+  cliente: z
     .string()
-    .min(5, { message: "La descripción debe tener al menos 5 caracteres" }),
+    .min(5, { message: "El nombre del cliente debe tener al menos 5 caracteres" }),
   precioCompra: z.coerce.number(),
+  precioVenta: z.coerce.number(),
   stockMin: z.coerce.number(),
-  medida: z.coerce.number(),
-  categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
   unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
 });
 
-type ProductFormValues = z.infer<typeof formSchema>;
+type StockFormValues = z.infer<typeof formSchema>;
 
-interface ProductFormProps {
+interface StockFormProps {
   initialData: any | null;
-  categorias: any;
   unidad: any;
 }
 
-export const ProductForm: React.FC<ProductFormProps> = ({
+export const StockForm: React.FC<StockFormProps> = ({
   initialData,
-  categorias,
   unidad,
 }) => {
   const params = useParams();
@@ -90,25 +89,23 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const defaultValues = initialData
     ? initialData
     : {
-        id: 1,
-        name:"",
-        codigo: "",
-        descripcion: "",
-        medidas: "",
-        categoria: "",
-        unidad:"",
-        precioCompra: 0,
-        stockMin: 0,
-        imgUrl: [],
-        
+      idProducto: 1,
+      noParte:"",
+      nombre: "",
+      cliente: "",
+      precioCompra: "",
+      precioVenta: "",
+      unidad:"",
+      stockMin: 0,
+      imgUrl: [],
       };
 
-  const form = useForm<ProductFormValues>({
+  const form = useForm<StockFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: ProductFormValues) => {
+  const onSubmit = async (data: StockFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
@@ -151,7 +148,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const triggerImgUrlValidation = () => form.trigger("imgUrl");
 
   return (
-    <>
+    <> 
       {/* <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -182,7 +179,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name="imgUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Imagenes producto</FormLabel>
+                <FormLabel>Imágenes Stock</FormLabel>
                 <FormControl>
                   <FileUpload
                     onChange={field.onChange}
@@ -197,12 +194,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           <div className="md:grid md:grid-cols-3 gap-8">
           <FormField
               control={form.control}
-              name="id"
+              name="idProducto"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Id Producto</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
+                    <Input type="number" disabled={loading} placeholder="B00XXX" {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
@@ -210,14 +207,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="codigo"
+              name="noParte"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Código</FormLabel>
+                  <FormLabel>No.Parte</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="A00XXX"
+                      placeholder="B000XXX"
                       {...field}
                     />
                   </FormControl>
@@ -227,14 +224,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="descripcion"
+              name="nombre"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Descripción</FormLabel>
+                  <FormLabel>Nombre de producto</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Descripción"
+                      placeholder="Caja ..."
                       {...field}
                     />
                   </FormControl>
@@ -247,7 +244,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="precioCompra"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Precio compra</FormLabel>
+                  <FormLabel>Precio de compra</FormLabel>
                   <FormControl>
                     <Input type="number" disabled={loading} {...field} />
                   </FormControl>
@@ -257,47 +254,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="medida"
+              name="precioVenta"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Medida (cm) </FormLabel>
+                  <FormLabel>Precio de Venta </FormLabel>
                   <FormControl>
                     <Input type="number" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="categoria"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Categoría</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Selecciona categoría"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {/* @ts-ignore  */}
-                      {categorias.map((category) => (
-                        <SelectItem key={category._id} value={category._id}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -317,7 +281,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Selecciona tipo de unidad"
+                          placeholder="Selecciona tipo unidad"
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -334,37 +298,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="precioCompra"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Precio compra </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="stockMin"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Stock mínimo </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
           </div>
-          <Button className="ml-auto mr-5" type="submit">
+          <Button className="bg-destructive hover:bg-destructive/90 ml-auto mr-5" type="submit">
             <Link href="./inicio">Cancelar</Link>
           </Button>
-          <Button disabled={loading} className="ml-5" type="submit">
+          <Button className="bg-cyan-500 hover:bg-cyan-600 ml-5"  disabled={loading} type="submit">
             {action}
           </Button>
         </form>

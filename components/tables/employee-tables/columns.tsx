@@ -24,21 +24,33 @@ export const columns: ColumnDef<Empleados>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+  /*
+  id: 1,
+    codigo: "TM-2024-02756",
+    fecha: "12/01/2024",
+    noParte: "11008528",
+    cliente: "TYG",
+    referencia: "F3280",
+    prducto: "Panel",
+    tipo: "Salida",
+    cantidad: 6000,
+    unidad: "Pieza",
+  */
   {
-    accessorKey: "first_name",
-    header: "NOMBRE",
+    accessorKey: "id",
+    header: "ID",
   },
   {
-    accessorKey: "country",
-    header: "COUNTRY",
+    accessorKey: "codigo",
+    header: "CODIGO",
   },
   {
-    accessorKey: "email",
-    header: "EMAIL",
+    accessorKey: "fecha",
+    header: "FECHA",
   },
   {
-    accessorKey: "job",
-    header: "COMPANY",
+    accessorKey: "noParte",
+    header: "NO.PARTE",
   },
   {
     accessorKey: "genero",

@@ -48,7 +48,7 @@ interface DataTableProps<TData, TValue> {
   };
 }
 
-export function AlmacenTable<TData, TValue>({
+export function StockTable<TData, TValue>({
   columns,
   data,
   pageNo,
@@ -239,7 +239,7 @@ export function AlmacenTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  No hay resultados
                 </TableCell>
               </TableRow>
             )}
@@ -297,7 +297,7 @@ export function AlmacenTable<TData, TValue>({
               <DoubleArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
-              aria-label="Ir a página anterior"
+              aria-label="Ir a página previa"
               variant="outline"
               className="h-8 w-8 p-0"
               onClick={() => table.previousPage()}
@@ -315,7 +315,7 @@ export function AlmacenTable<TData, TValue>({
               <ChevronRightIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
-              aria-label="Ir a última página"
+              aria-label="Ir a página siguiente"
               variant="outline"
               className="hidden h-8 w-8 p-0 lg:flex"
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}

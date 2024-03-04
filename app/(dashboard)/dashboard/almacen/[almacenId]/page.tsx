@@ -6,7 +6,7 @@ export default function Page() {
   const breadcrumbItems = [
     { title: "Almacen", link: "/dashboard/almacen" },
     { title: "Alta de artículo", link: "/dashboard/almacen/alta" },
-  ];
+  ]; 
   return (
     <div className="flex-1 space-y-4 p-8">
       <BreadCrumb items={breadcrumbItems} />

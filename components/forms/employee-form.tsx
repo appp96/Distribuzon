@@ -68,10 +68,10 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Create product";
-  const description = initialData ? "Edit a product." : "Add a new product";
-  const toastMessage = initialData ? "Product updated." : "Product created.";
-  const action = initialData ? "Save changes" : "Create";
+  const title = initialData ? "Editar empleado" : "Crear empleado";
+  const description = initialData ? "Editar un empleado" : "Agregar nuevo empleado";
+  const toastMessage = initialData ? "Empleado actualizado" : "Empleado creado";
+  const action = initialData ? "Guardar cambios" : "Crear";
 
   const defaultValues = initialData
     ? initialData
