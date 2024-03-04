@@ -52,14 +52,14 @@ const formSchema = z.object({
   category: z.string().min(1, { message: "Please select a category" }),
 });
 
-type ProductFormValues = z.infer<typeof formSchema>;
+type EmployeeFormValues = z.infer<typeof formSchema>;
 
-interface ProductFormProps {
+interface EmployeeFormProps {
   initialData: any | null;
   categories: any;
 }
 
-export const EmployeeForm: React.FC<ProductFormProps> = ({
+export const EmployeeForm: React.FC<EmployeeFormProps> = ({
   initialData,
   categories,
 }) => {
@@ -83,12 +83,12 @@ export const EmployeeForm: React.FC<ProductFormProps> = ({
         category: "",
       };
 
-  const form = useForm<ProductFormValues>({
+  const form = useForm<EmployeeFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: ProductFormValues) => {
+  const onSubmit = async (data: EmployeeFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
@@ -162,7 +162,7 @@ export const EmployeeForm: React.FC<ProductFormProps> = ({
             name="imgUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images</FormLabel>
+                <FormLabel>Imageneeees</FormLabel>
                 <FormControl>
                   <FileUpload
                     onChange={field.onChange}

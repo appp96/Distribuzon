@@ -63,15 +63,15 @@ const formSchema = z.object({
   unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
 });
 
-type ProductFormValues = z.infer<typeof formSchema>;
+type AlmacenFormValues = z.infer<typeof formSchema>;
 
-interface ProductFormProps {
+interface AlmacenFormProps {
   initialData: any | null;
   categorias: any;
   unidad: any;
 }
 
-export const ProductForm: React.FC<ProductFormProps> = ({
+export const AlmacenForm: React.FC<AlmacenFormProps> = ({
   initialData,
   categorias,
   unidad,
@@ -103,12 +103,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         
       };
 
-  const form = useForm<ProductFormValues>({
+  const form = useForm<AlmacenFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: ProductFormValues) => {
+  const onSubmit = async (data: AlmacenFormValues) => {
     try {
       setLoading(true);
       if (initialData) {

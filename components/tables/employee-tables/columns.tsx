@@ -1,24 +1,24 @@
 "use client";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Employee } from "@/constants/data";
+import { Empleados } from "@/constants/data";
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
 
-export const columns: ColumnDef<Employee>[] = [
+export const columns: ColumnDef<Empleados>[] = [
   {
     id: "select",
     header: ({ table }) => (
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
+        aria-label="Seleccionar todo"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
+        aria-label="Seleccionar fila"
       />
     ),
     enableSorting: false,
@@ -26,7 +26,7 @@ export const columns: ColumnDef<Employee>[] = [
   },
   {
     accessorKey: "first_name",
-    header: "NAME",
+    header: "NOMBRE",
   },
   {
     accessorKey: "country",
@@ -41,11 +41,11 @@ export const columns: ColumnDef<Employee>[] = [
     header: "COMPANY",
   },
   {
-    accessorKey: "gender",
-    header: "GENDER",
+    accessorKey: "genero",
+    header: "GENERO",
   },
   {
-    id: "actions",
+    id: "acciones",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];

@@ -25,7 +25,7 @@ export default async function page({ searchParams }: paramsProps) {
 
   const res = await fetch(
     `https://api.slingacademy.com/v1/sample-data/users?offset=${offset}&limit=${pageLimit}` +
-      (id ? `&search=${id}` : ""),
+      (id ? `&buscar=${id}` : ""),
   );
   const almacenRes = await res.json();
   const totalUsers = almacenRes.total_users; //1000

@@ -4,8 +4,8 @@ import React from "react";
 
 export default function Page() {
   const breadcrumbItems = [
-    { title: "Employee", link: "/dashboard/employee" },
-    { title: "Create", link: "/dashboard/employee/create" },
+    { title: "Empleados", link: "/dashboard/employee" },
+    { title: "Crear", link: "/dashboard/employee/crear" },
   ];
   return (
     <div className="flex-1 space-y-4 p-8">

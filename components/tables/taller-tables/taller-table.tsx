@@ -48,7 +48,7 @@ interface DataTableProps<TData, TValue> {
   };
 }
 
-export function EmployeeTable<TData, TValue>({
+export function TallerTable<TData, TValue>({
   columns,
   data,
   pageNo,
@@ -221,7 +221,7 @@ export function EmployeeTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
+                  data-state={row.getIsSelected() && "seleccionadas"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -239,7 +239,7 @@ export function EmployeeTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  No hay resultados
                 </TableCell>
               </TableRow>
             )}
@@ -257,7 +257,7 @@ export function EmployeeTable<TData, TValue>({
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8">
             <div className="flex items-center space-x-2">
               <p className="whitespace-nowrap text-sm font-medium">
-                Rows per page
+                Filas por página
               </p>
               <Select
                 value={`${table.getState().pagination.pageSize}`}
@@ -288,7 +288,7 @@ export function EmployeeTable<TData, TValue>({
           </div>
           <div className="flex items-center space-x-2">
             <Button
-              aria-label="Go to first page"
+              aria-label="Ir a primera página"
               variant="outline"
               className="hidden h-8 w-8 p-0 lg:flex"
               onClick={() => table.setPageIndex(0)}
@@ -297,7 +297,7 @@ export function EmployeeTable<TData, TValue>({
               <DoubleArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
-              aria-label="Go to previous page"
+              aria-label="Ir a página anterior"
               variant="outline"
               className="h-8 w-8 p-0"
               onClick={() => table.previousPage()}
@@ -306,7 +306,7 @@ export function EmployeeTable<TData, TValue>({
               <ChevronLeftIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
-              aria-label="Go to next page"
+              aria-label="Ir a página siguiente"
               variant="outline"
               className="h-8 w-8 p-0"
               onClick={() => table.nextPage()}
@@ -315,7 +315,7 @@ export function EmployeeTable<TData, TValue>({
               <ChevronRightIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
-              aria-label="Go to last page"
+              aria-label="Ir a página siguiente"
               variant="outline"
               className="hidden h-8 w-8 p-0 lg:flex"
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
