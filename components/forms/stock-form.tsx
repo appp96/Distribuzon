@@ -310,3 +310,4 @@ export const StockForm: React.FC<StockFormProps> = ({
     </>
   );
 };
+ 

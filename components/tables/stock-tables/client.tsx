@@ -7,7 +7,8 @@ import { Stock } from "@/constants/data";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { columns } from "./columns";
- 
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface StockClientProps {
   data: Stock[];
 }
@@ -17,6 +18,7 @@ export const UserClient: React.FC<StockClientProps> = ({ data }) => {
 
   return (
     <>
+    <ScrollArea className="h-full">
       <div className="flex items-start justify-between">
         <Heading
           title={`Stock (${data.length})`}
@@ -30,7 +32,8 @@ export const UserClient: React.FC<StockClientProps> = ({ data }) => {
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="name" columns={columns} data={data} />
+      <DataTable searchKey="nombre" columns={columns} data={data} />
+      </ScrollArea>
     </>
   );
 };

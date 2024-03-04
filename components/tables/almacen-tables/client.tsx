@@ -8,11 +8,11 @@ import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { columns } from "./columns";
 
-interface ProductsClientProps {
+interface AlmacenClientProps {
   data: Almacen[];
 }
 
-export const UserClient: React.FC<ProductsClientProps> = ({ data }) => {
+export const UserClient: React.FC<AlmacenClientProps> = ({ data }) => {
   const router = useRouter();
 
   return (
