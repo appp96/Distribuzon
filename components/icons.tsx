@@ -1,4 +1,5 @@
 import {
+  Warehouse,
   AlertTriangle,
   ArrowRight,
   Check,
@@ -29,12 +30,20 @@ import {
   User2Icon,
   UserX2Icon,
   X,
-  Warehouse,
+  PackageSearch,
+  Factory,
+  Truck,
+  NotebookTabs,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
+  truck: Truck,
+  notebooktabs: NotebookTabs,
+  factory: Factory,
+  packagesearch: PackageSearch,
+  warehouse: Warehouse,
   dashboard: LayoutDashboardIcon,
   logo: Command,
   login: LogIn,

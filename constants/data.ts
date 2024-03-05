@@ -368,25 +368,25 @@ export const navItems: NavItem[] = [
   {
     title: "Almacén",
     href: "/dashboard/almacen",
-    icon: "pizza",
+    icon: "warehouse",
     label: "Almacén",
   },
   {
     title: "Stock",
     href: "/dashboard/stock",
-    icon: "pizza",
+    icon: "packagesearch",
     label: "Stock",
   },
   {
     title: "Taller",
     href: "/dashboard/taller",
-    icon: "pizza",
+    icon: "factory",
     label: "Taller",
   },
   {
     title: "Pedidos",
     href: "/dashboard/pedidos",
-    icon: "pizza",
+    icon: "truck",
     label: "Pedidos",
   },
   {
@@ -398,7 +398,7 @@ export const navItems: NavItem[] = [
   {
     title: "Proveedores",
     href: "/dashboard/proveedores",
-    icon: "employee",
+    icon: "user",
     label: "Proveedores",
   },
   {
