@@ -31,7 +31,7 @@ export default function AuthenticationPage() {
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col text-center mb-6">
             <img src="/images/distribuzon_logo_dark.svg" alt="Logo" className="h-8 w-auto hidden dark:block" />
-            <img src="/images/distribuzon_logo_light.svg" alt="Logo" className="h-8 w-auto block dark:hidden" />
+            <img src="/images/distribuzon_logo_light.svg" alt="Log" className="h-8 w-auto block dark:hidden" />
           </div>
           <UserAuthForm />
       
