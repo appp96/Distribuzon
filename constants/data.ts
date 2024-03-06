@@ -15,6 +15,11 @@ export const navItems: NavItem[] = [
     isChidren: true,
     children: [
       {
+        title: "Stock",
+        icon: "warehouse",
+        href: "/dashboard/almacen/stock",
+      },
+      {
         title: "Entradas",
         icon: "warehouse",
         href: "/dashboard/almacen/entradas",
@@ -46,51 +51,21 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    title: "Stock",
-    href: "/dashboard/stock",
-    icon: "packagesearch",
-    label: "Stock",
-  },
-  {
-    title: "Compras",
-    href: "/dashboard/compras",
-    icon: "factory",
-    label: "Compras",
-  },
-  {
-    title: "Artículos",
-    href: "/dashboard/articulos",
-    icon: "factory",
-    label: "Artículos",
-  },
-  {
-    title: "Historial",
-    href: "/dashboard/historial",
-    icon: "factory",
-    label: "Historial",
-  },
-  {
     title: "Taller",
     href: "/dashboard/taller",
     icon: "factory",
     label: "Taller",
   },
   {
-    title: "Pedidos",
-    href: "/dashboard/pedidos",
-    icon: "truck",
-    label: "Pedidos",
-  },
-  {
     title: "Proveedores",
     href: "/dashboard/proveedores",
-    icon: "user",
+    icon: "notebooktabs",
     label: "Proveedores",
   },
   {
     title: "Reportes",
     href: "/dashboard/reportes",
-    icon: "user",
+    icon: "barchartbig",
     label: "Reportes",
   },
   {
@@ -98,31 +73,7 @@ export const navItems: NavItem[] = [
     href: "/dashboard/adminUsuarios",
     icon: "user",
     label: "Usuarios",
-  },
-
-  {
-    title: "Example",
-    icon: "user",
-    href: "/example",
-    isChidren: true,
-    children: [
-      {
-        title: "Example-01",
-        icon: "user",
-        href: "/example/employees",
-      },
-      {
-        title: "Example-02",
-        icon: "user",
-        href: "/example/example-02",
-      },
-      {
-        title: "Example-03",
-        icon: "user",
-        href: "/example/example-03",
-      },
-    ],
-  },
+  }
 ];
 
 export type Almacen = {

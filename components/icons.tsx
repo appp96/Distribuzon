@@ -34,11 +34,13 @@ import {
   Factory,
   Truck,
   NotebookTabs,
+  BarChartBig,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
+  barchartbig: BarChartBig,
   truck: Truck,
   notebooktabs: NotebookTabs,
   factory: Factory,
