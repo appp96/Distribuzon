@@ -61,7 +61,7 @@ interface EmployeeFormProps {
 
 export const EmployeeForm: React.FC<EmployeeFormProps> = ({
   initialData,
-  categories,
+  categories, 
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -98,7 +98,7 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/products`);
+      router.push(`/dashboard/taller`);
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
@@ -120,7 +120,7 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/products`);
+      router.push(`/${params.storeId}/taller`);
     } catch (error: any) {
     } finally {
       setLoading(false);

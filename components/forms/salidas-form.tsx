@@ -63,17 +63,18 @@ const formSchema = z.object({
   unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
 });
 
-type TallerFormValues = z.infer<typeof formSchema>;
+type SalidasFormValues = z.infer<typeof formSchema>;
 
-interface TallerFormProps {
+interface SalidasFormProps {
   initialData: any | null;
   categorias: any;
   unidad: any;
 }
 
-export const TallerForm: React.FC<TallerFormProps> = ({
+export const SalidasForm: React.FC<SalidasFormProps> = ({
   initialData,
-  categorias, 
+  categorias,
+  unidad,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -81,9 +82,9 @@ export const TallerForm: React.FC<TallerFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Alta de artículo";
-  const description = initialData ? "Edit a product." : "Agregar artículo nuevo";
-  const toastMessage = initialData ? "Product updated." : "Articulo creado.";
+  const title = initialData ? "Edit product" : "Alta de artículo de salida";
+  const description = initialData ? "Edit a product." : "Agregar artículo nuevo de salida";
+  const toastMessage = initialData ? "Product updated." : "Articulo de salida creado";
   const action = initialData ? "Save changes" : "Crear";
 
   const defaultValues = initialData
@@ -102,12 +103,12 @@ export const TallerForm: React.FC<TallerFormProps> = ({
         
       };
 
-  const form = useForm<TallerFormValues>({
+  const form = useForm<SalidasFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: TallerFormValues) => {
+  const onSubmit = async (data: SalidasFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
@@ -117,7 +118,7 @@ export const TallerForm: React.FC<TallerFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/taller`);
+      router.push(`/dashboard/salidas`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -139,7 +140,7 @@ export const TallerForm: React.FC<TallerFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/taller`);
+      router.push(`/${params.storeId}/salidas`);
     } catch (error: any) {
     } finally {
       setLoading(false);
@@ -176,23 +177,7 @@ export const TallerForm: React.FC<TallerFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
-          <FormField
-            control={form.control}
-            name="imgUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Imágenes</FormLabel>
-                <FormControl>
-                  <FileUpload
-                    onChange={field.onChange}
-                    value={field.value}
-                    onRemove={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          
           <div className="md:grid md:grid-cols-3 gap-8">
           <FormField
               control={form.control}
@@ -360,6 +345,23 @@ export const TallerForm: React.FC<TallerFormProps> = ({
               )}
             /> 
           </div>
+          <FormField
+            control={form.control}
+            name="imgUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Imágenes</FormLabel>
+                <FormControl>
+                  <FileUpload
+                    onChange={field.onChange}
+                    value={field.value}
+                    onRemove={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <Button className="bg-destructive hover:bg-destructive/90 ml-auto mr-5" type="submit">
             <Link href="./inicio">Cancelar</Link>
           </Button>

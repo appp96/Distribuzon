@@ -1,5 +1,237 @@
 import { NavItem, SidebarNavItem } from "@/types";
 
+export const navItems: NavItem[] = [
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+    icon: "dashboard",
+    label: "Dashboard",
+  },
+  {
+    title: "Almacén",
+    href: "/dashboard/almacen",
+    icon: "warehouse",
+    label: "Almacén",
+  },
+  {
+    title: "Entradas",
+    href: "/dashboard/entradas",
+    icon: "warehouse",
+    label: "Entradas",
+  },
+  {
+    title: "Salidas",
+    href: "/dashboard/salidas",
+    icon: "warehouse",
+    label: "Salidas",
+  },
+  {
+    title: "Stock",
+    href: "/dashboard/stock",
+    icon: "packagesearch",
+    label: "Stock",
+  },
+  {
+    title: "Compras",
+    href: "/dashboard/compras",
+    icon: "factory",
+    label: "Compras",
+  },
+  {
+    title: "Artículos",
+    href: "/dashboard/articulos",
+    icon: "factory",
+    label: "Artículos",
+  },
+  {
+    title: "Historial",
+    href: "/dashboard/historial",
+    icon: "factory",
+    label: "Historial",
+  },
+  {
+    title: "Taller",
+    href: "/dashboard/taller",
+    icon: "factory",
+    label: "Taller",
+  },
+  {
+    title: "Pedidos",
+    href: "/dashboard/pedidos",
+    icon: "truck",
+    label: "Pedidos",
+  },
+  {
+    title: "Proveedores",
+    href: "/dashboard/proveedores",
+    icon: "user",
+    label: "Proveedores",
+  },
+  {
+    title: "Reportes",
+    href: "/dashboard/reportes",
+    icon: "user",
+    label: "Reportes",
+  },
+  {
+    title: "Usuarios",
+    href: "/dashboard/adminUsuarios",
+    icon: "user",
+    label: "Usuarios",
+  },
+];
+
+export type Almacen = {
+  no: number;
+  codigo: string;
+  fecha: string;
+  noParte: string;
+  cliente: string;
+  referencia: string;
+  producto: string;
+  tipo: string;
+  cantidad: number;
+  unidad: string;
+};
+
+export const almacen: Almacen[] = [
+  {
+    no: 1,
+    codigo: "TM-2024-02752",
+    fecha: "11/01/2024",
+    noParte: "11005513",
+    cliente: "TYG",
+    referencia: "0000",
+    producto: "2x7",
+    tipo: "Entrada",
+    cantidad: 20000,
+    unidad: "Pieza",
+  },
+  {
+    no: 2,
+    codigo: "TM-2024-02751",
+    fecha: "10/01/2024",
+    noParte: "11005513",
+    cliente: "TYG",
+    referencia: "0000",
+    producto: "2x7",
+    tipo: "Entrada",
+    cantidad: 24000,
+    unidad: "Pieza",
+  },
+  {
+    no: 3,
+    codigo: "TM-2024-02750",
+    fecha: "10/01/2024",
+    noParte: "11035281",
+    cliente: "TYG",
+    referencia: "0000",
+    producto: "Certificados",
+    tipo: "Entrada",
+    cantidad: 3600,
+    unidad: "Pieza",
+  },
+  {
+    no: 4,
+    codigo: "TM-2024-02748",
+    fecha: "10/01/2024",
+    noParte: "B000089",
+    cliente: "MRM",
+    referencia: "0000",
+    producto: "Tarjeta de presentación",
+    tipo: "Entrada",
+    cantidad: 200,
+    unidad: "Pieza",
+  },
+]
+
+export type Salidas = {
+  no: number;
+  codigo: string;
+  fecha: string;
+  noParte: string;
+  cliente: string;
+  referencia: string;
+  producto: string;
+  tipo: string;
+  cantidad: number;
+  unidad: string;
+};
+
+export const salidas: Salidas[] = [
+  {
+    no: 1,
+    codigo: "TM-2024-02756",
+    fecha: "12/01/2024",
+    noParte: "11008528",
+    cliente: "TYG",
+    referencia: "F3280",
+    producto: "Panel",
+    tipo: "Salida",
+    cantidad: 6000,
+    unidad: "Pieza",
+  },
+  {
+    no: 2,
+    codigo: "TM-2024-02755",
+    fecha: "12/01/2024",
+    noParte: "11215432",
+    cliente: "TYG",
+    referencia: "F3272",
+    producto: "Cover",
+    tipo: "Salida",
+    cantidad: 32000,
+    unidad: "Pieza",
+  },
+  {
+    no: 3,
+    codigo: "TM-2024-02754",
+    fecha: "12/01/2024",
+    noParte: "11029640",
+    cliente: "TYG",
+    referencia: "F3271",
+    producto: "1x15",
+    tipo: "Salida",
+    cantidad: 10000,
+    unidad: "Pieza",
+  },
+  {
+    no: 4,
+    codigo: "TM-2024-02753",
+    fecha: "11/01/2024",
+    noParte: "B00318",
+    cliente: "HOSPITAL ÁNGELES TORREÓN",
+    referencia: "F3269",
+    producto: "Expediente clínico",
+    tipo: "Salida",
+    cantidad: 3000,
+    unidad: "Pieza",
+  },
+  {
+    no: 5,
+    codigo: "TM-2024-02749",
+    fecha: "10/01/2024",
+    noParte: "B000089",
+    cliente: "MRM",
+    referencia: "F3268",
+    producto: "Tarjeta de presentación",
+    tipo: "Salida",
+    cantidad: 200,
+    unidad: "Pieza",
+  },
+  {
+    no: 6,
+    codigo: "TM-2024-02747",
+    fecha: "10/01/2024",
+    noParte: "AFOGN1",
+    cliente: "BAMEX",
+    referencia: "F3267",
+    producto: "Base caja caple 24pts",
+    tipo: "Salida",
+    cantidad: 5000,
+    unidad: "Pieza",
+  },
+]
 export type User = {
   id: number;
   name: string;
@@ -352,69 +584,6 @@ export const stock: Stock[] = [
   
 ]
 
-export const navItems: NavItem[] = [
-  {
-    title: "Dashboard",
-    href: "/dashboard",
-    icon: "dashboard",
-    label: "Dashboard",
-  },
-  {
-    title: "Empleados",
-    href: "/dashboard/employee",
-    icon: "pizza",
-    label: "Empleados",
-  },
-  {
-    title: "Almacén",
-    href: "/dashboard/almacen",
-    icon: "warehouse",
-    label: "Almacén",
-  },
-  {
-    title: "Stock",
-    href: "/dashboard/stock",
-    icon: "packagesearch",
-    label: "Stock",
-  },
-  {
-    title: "Taller",
-    href: "/dashboard/taller",
-    icon: "factory",
-    label: "Taller",
-  },
-  {
-    title: "Pedidos",
-    href: "/dashboard/pedidos",
-    icon: "truck",
-    label: "Pedidos",
-  },
-  {
-    title: "User",
-    href: "/dashboard/user",
-    icon: "user",
-    label: "user",
-  },
-  {
-    title: "Proveedores",
-    href: "/dashboard/proveedores",
-    icon: "user",
-    label: "Proveedores",
-  },
-  {
-    title: "Profile",
-    href: "/dashboard/profile",
-    icon: "profile",
-    label: "profile",
-  },
-  {
-    title: "Logout",
-    href: "/",
-    icon: "login",
-    label: "logout",
-  },
-];
-
 export type Empleados = {
   id: number;
   codigo: string;
@@ -443,138 +612,3 @@ export const empleados: Empleados[] = [
   },
 ]
 
-export type Almacen = {
-  no: number;
-  codigo: string;
-  fecha: string;
-  noParte: string;
-  cliente: string;
-  referencia: string;
-  prducto: string;
-  tipo: string;
-  cantidad: number;
-  unidad: string;
-};
-
-export const almacen: Almacen[] = [
-  {
-    no: 1,
-    codigo: "TM-2024-02756",
-    fecha: "12/01/2024",
-    noParte: "11008528",
-    cliente: "TYG",
-    referencia: "F3280",
-    prducto: "Panel",
-    tipo: "Salida",
-    cantidad: 6000,
-    unidad: "Pieza",
-  },
-  {
-    no: 2,
-    codigo: "TM-2024-02755",
-    fecha: "12/01/2024",
-    noParte: "11215432",
-    cliente: "TYG",
-    referencia: "F3272",
-    prducto: "Cover",
-    tipo: "Salida",
-    cantidad: 32000,
-    unidad: "Pieza",
-  },
-  {
-    no: 3,
-    codigo: "TM-2024-02754",
-    fecha: "12/01/2024",
-    noParte: "11029640",
-    cliente: "TYG",
-    referencia: "F3271",
-    prducto: "1x15",
-    tipo: "Salida",
-    cantidad: 10000,
-    unidad: "Pieza",
-  },
-  {
-    no: 4,
-    codigo: "TM-2024-02753",
-    fecha: "11/01/2024",
-    noParte: "B00318",
-    cliente: "HOSPITAL ÁNGELES TORREÓN",
-    referencia: "F3269",
-    prducto: "Expediente clínico",
-    tipo: "Salida",
-    cantidad: 3000,
-    unidad: "Pieza",
-  },
-  {
-    no: 5,
-    codigo: "TM-2024-02752",
-    fecha: "11/01/2024",
-    noParte: "11005513",
-    cliente: "TYG",
-    referencia: "0000",
-    prducto: "2x7",
-    tipo: "Entrada",
-    cantidad: 20000,
-    unidad: "Pieza",
-  },
-  {
-    no: 6,
-    codigo: "TM-2024-02751",
-    fecha: "10/01/2024",
-    noParte: "11005513",
-    cliente: "TYG",
-    referencia: "0000",
-    prducto: "2x7",
-    tipo: "Entrada",
-    cantidad: 24000,
-    unidad: "Pieza",
-  },
-  {
-    no: 7,
-    codigo: "TM-2024-02750",
-    fecha: "10/01/2024",
-    noParte: "11035281",
-    cliente: "TYG",
-    referencia: "0000",
-    prducto: "Certificados",
-    tipo: "Entrada",
-    cantidad: 3600,
-    unidad: "Pieza",
-  },
-  {
-    no: 8,
-    codigo: "TM-2024-02749",
-    fecha: "10/01/2024",
-    noParte: "B000089",
-    cliente: "MRM",
-    referencia: "F3268",
-    prducto: "Tarjeta de presentación",
-    tipo: "Salida",
-    cantidad: 200,
-    unidad: "Pieza",
-  },
-  {
-    no: 9,
-    codigo: "TM-2024-02748",
-    fecha: "10/01/2024",
-    noParte: "B000089",
-    cliente: "MRM",
-    referencia: "0000",
-    prducto: "Tarjeta de presentación",
-    tipo: "Entrada",
-    cantidad: 200,
-    unidad: "Pieza",
-  },
-  {
-    no: 10,
-    codigo: "TM-2024-02747",
-    fecha: "10/01/2024",
-    noParte: "AFOGN1",
-    cliente: "BAMEX",
-    referencia: "F3267",
-    prducto: "Base caja caple 24pts",
-    tipo: "Salida",
-    cantidad: 5000,
-    unidad: "Pieza",
-  },
-]

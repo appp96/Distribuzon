@@ -82,9 +82,9 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Alta de artículo";
-  const description = initialData ? "Edit a product." : "Agregar artículo nuevo";
-  const toastMessage = initialData ? "Product updated." : "Articulo creado.";
+  const title = initialData ? "Edit product" : "Alta de artículo de entrada";
+  const description = initialData ? "Edit a product." : "Agregar artículo nuevo de entrada";
+  const toastMessage = initialData ? "Product updated." : "Articulo de entrada creado";
   const action = initialData ? "Save changes" : "Crear";
 
   const defaultValues = initialData
@@ -118,7 +118,7 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/products`);
+      router.push(`/dashboard/almacen`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -140,7 +140,7 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/products`);
+      router.push(`/${params.storeId}/almacen`);
     } catch (error: any) {
     } finally {
       setLoading(false);

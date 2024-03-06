@@ -115,7 +115,7 @@ export const StockForm: React.FC<StockFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/products`);
+      router.push(`/dashboard/stock`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -137,7 +137,7 @@ export const StockForm: React.FC<StockFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/products`);
+      router.push(`/${params.storeId}/stock`);
     } catch (error: any) {
     } finally {
       setLoading(false);
