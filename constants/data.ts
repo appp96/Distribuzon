@@ -79,6 +79,30 @@ export const navItems: NavItem[] = [
     icon: "user",
     label: "Usuarios",
   },
+
+  {
+    title: "Example",
+    icon: "user",
+    href: "/example",
+    isChidren: true,
+    children: [
+      {
+        title: "Example-01",
+        icon: "user",
+        href: "/example/employees",
+      },
+      {
+        title: "Example-02",
+        icon: "user",
+        href: "/example/example-02",
+      },
+      {
+        title: "Example-03",
+        icon: "user",
+        href: "/example/example-03",
+      },
+    ],
+  },
 ];
 
 export type Almacen = {
