@@ -24,7 +24,7 @@ export const UserClient: React.FC<ArticulosClientProps> = ({ data }) => {
         />
         <Button
           className="text-xs md:text-sm"
-          onClick={() => router.push(`/dashboard/articulos/alta`)}
+          onClick={() => router.push(`/dashboard/compras/articulos/alta`)}
         >
           <Plus className="mr-2 h-4 w-4" /> Agregar
         </Button>
