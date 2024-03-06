@@ -24,7 +24,7 @@ export const UserClient: React.FC<SalidasClientProps> = ({ data }) => {
         />
         <Button
           className="text-xs md:text-sm"
-          onClick={() => router.push(`/dashboard/salidas/alta`)}
+          onClick={() => router.push(`/dashboard/almacen/salidas/alta`)}
         >
           <Plus className="mr-2 h-4 w-4" /> Agregar
         </Button>
