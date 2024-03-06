@@ -63,15 +63,15 @@ const formSchema = z.object({
   unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
 });
 
-type AlmacenFormValues = z.infer<typeof formSchema>;
+type EntradasFormValues = z.infer<typeof formSchema>;
 
-interface AlmacenFormProps {
+interface EntradasFormProps {
   initialData: any | null;
   categorias: any;
   unidad: any;
 }
 
-export const AlmacenForm: React.FC<AlmacenFormProps> = ({
+export const EntradasForm: React.FC<EntradasFormProps> = ({
   initialData,
   categorias,
   unidad,
@@ -103,12 +103,12 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
         
       };
 
-  const form = useForm<AlmacenFormValues>({
+  const form = useForm<EntradasFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: AlmacenFormValues) => {
+  const onSubmit = async (data: EntradasFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
@@ -118,7 +118,7 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/almacen`);
+      router.push(`/dashboard/almacen/entradas`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -140,7 +140,7 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/almacen`);
+      router.push(`/${params.storeId}/almacen/entradas`);
     } catch (error: any) {
     } finally {
       setLoading(false);

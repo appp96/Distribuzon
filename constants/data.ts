@@ -140,6 +140,70 @@ export const almacen: Almacen[] = [
   },
 ]
 
+export type Entradas = {
+  no: number;
+  codigo: string;
+  fecha: string;
+  noParte: string;
+  cliente: string;
+  referencia: string;
+  producto: string;
+  tipo: string;
+  cantidad: number;
+  unidad: string;
+};
+
+export const entradas: Entradas[] = [
+  {
+    no: 1,
+    codigo: "TM-2024-02752",
+    fecha: "11/01/2024",
+    noParte: "11005513",
+    cliente: "TYG",
+    referencia: "0000",
+    producto: "2x7",
+    tipo: "Entrada",
+    cantidad: 20000,
+    unidad: "Pieza",
+  },
+  {
+    no: 2,
+    codigo: "TM-2024-02751",
+    fecha: "10/01/2024",
+    noParte: "11005513",
+    cliente: "TYG",
+    referencia: "0000",
+    producto: "2x7",
+    tipo: "Entrada",
+    cantidad: 24000,
+    unidad: "Pieza",
+  },
+  {
+    no: 3,
+    codigo: "TM-2024-02750",
+    fecha: "10/01/2024",
+    noParte: "11035281",
+    cliente: "TYG",
+    referencia: "0000",
+    producto: "Certificados",
+    tipo: "Entrada",
+    cantidad: 3600,
+    unidad: "Pieza",
+  },
+  {
+    no: 4,
+    codigo: "TM-2024-02748",
+    fecha: "10/01/2024",
+    noParte: "B000089",
+    cliente: "MRM",
+    referencia: "0000",
+    producto: "Tarjeta de presentación",
+    tipo: "Entrada",
+    cantidad: 200,
+    unidad: "Pieza",
+  },
+]
+
 export type Salidas = {
   no: number;
   codigo: string;
