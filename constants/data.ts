@@ -15,11 +15,6 @@ export const navItems: NavItem[] = [
     isChidren: true,
     children: [
       {
-        title: "Stock",
-        icon: "warehouse",
-        href: "/dashboard/almacen/stock",
-      },
-      {
         title: "Entradas",
         icon: "warehouse",
         href: "/dashboard/almacen/entradas",
@@ -28,6 +23,11 @@ export const navItems: NavItem[] = [
         title: "Salidas",
         icon: "warehouse",
         href: "/dashboard/almacen/salidas",
+      },
+      {
+        title: "Stock",
+        icon: "warehouse",
+        href: "/dashboard/almacen/stock",
       }
     ],
   },
