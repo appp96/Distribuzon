@@ -51,11 +51,11 @@ const formSchema = z.object({
   descripcion: z
     .string()
     .min(5, { message: "La descripción debe tener al menos 5 caracteres" }),
-  categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
   medida: z.coerce.number(),
+  categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
+  unidad: z.string().min(1, { message: "Por favor selecciona una unidad" }),
   precioCompra: z.coerce.number(),
   stockMin: z.coerce.number(),
-  unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
   imgUrl: z
     .array(ImgSchema)
     .max(IMG_MAX_LIMIT, { message: "Sólo puedes subir 3 imagenes" })
@@ -195,7 +195,7 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
           <div className="md:grid md:grid-cols-3 gap-8">
           <FormField
               control={form.control}
-              name="id"
+              name="idProducto"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Id Producto</FormLabel>
@@ -242,25 +242,12 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="precioCompra"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Precio compra</FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
               name="medida"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Medida (cm) </FormLabel>
+                  <FormLabel>Medidas (cm)</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
+                    <Input type="number" placeholder="3" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
@@ -299,7 +286,7 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
                 </FormItem>
               )}
             />
-            <FormField
+<FormField
               control={form.control}
               name="unidad"
               render={({ field }) => (
@@ -332,6 +319,33 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="precioCompra"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Precio compra</FormLabel>
+                  <FormControl>
+                    <Input type="number" disabled={loading} {...field} />
+                  </FormControl>
+                  <FormMessage /> 
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="stockMin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Stock Mínimo </FormLabel>
+                  <FormControl>
+                    <Input type="number" disabled={loading} {...field} />
+                  </FormControl>
+                  <FormMessage /> 
+                </FormItem>
+              )}
+            />
+            
             <FormField
               control={form.control}
               name="precioCompra"
