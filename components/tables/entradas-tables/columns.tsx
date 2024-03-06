@@ -53,10 +53,6 @@ export const columns: ColumnDef<Entradas>[] = [
     header: "PRODUCTO",
   },
   {
-    accessorKey: "tipo",
-    header: "TIPO",
-  },
-  {
     accessorKey: "cantidad",
     header: "CANTIDAD",
   },

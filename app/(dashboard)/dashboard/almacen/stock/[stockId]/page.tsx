@@ -5,7 +5,7 @@ import React from "react";
 export default function Page() {
   const breadcrumbItems = [
     { title: "Stock", link: "/dashboard/stock" },
-    { title: "Alta de stock", link: "/dashboard/stock/alta" },
+    { title: "Alta de stock", link: "/dashboard/almacen/stock/alta" },
   ];
   return (
     <div className="flex-1 space-y-4 p-8">
