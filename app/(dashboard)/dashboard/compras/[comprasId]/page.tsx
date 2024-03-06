@@ -1,16 +1,16 @@
 import BreadCrumb from "@/components/breadcrumb";
-import { AlmacenForm } from "@/components/forms/almacen-form";
+import { ComprasForm } from "@/components/forms/compras-form";
 import React from "react";
 
 export default function Page() {
   const breadcrumbItems = [
-    { title: "Almacen", link: "/dashboard/almacen" },
-    { title: "Alta de artículo de entrada", link: "/dashboard/almacen/alta" },
+    { title: "Compras", link: "/dashboard/compras" },
+    { title: "Alta de compras", link: "/dashboard/compras/alta" },
   ]; 
   return (
     <div className="flex-1 space-y-4 p-8">
       <BreadCrumb items={breadcrumbItems} />
-      <AlmacenForm
+      <ComprasForm
         categorias={[
           { _id: "tarjeta", name: "tarjeta" },
           { _id: "certificado", name: "certificado" },
