@@ -16,37 +16,32 @@ export const navItems: NavItem[] = [
     children: [
       {
         title: "Entradas",
-        icon: "warehouse",
         href: "/dashboard/almacen/entradas",
       },
       {
         title: "Salidas",
-        icon: "warehouse",
         href: "/dashboard/almacen/salidas",
       },
       {
         title: "Stock",
-        icon: "warehouse",
         href: "/dashboard/almacen/stock",
       }
     ],
   },
   {
     title: "Compras",
-    href: "/dashboard/almacen",
-    icon: "warehouse",
+    href: "/dashboard/compras",
+    icon: "shoppingcart",
     label: "Almacén",
     isChidren: true,
     children: [
       {
         title: "Artículos",
-        icon: "warehouse",
-        href: "/dashboard/almacen/entradas",
+        href: "/dashboard/compras/articulos",
       },
       {
         title: "Historial",
-        icon: "warehouse",
-        href: "/dashboard/almacen/salidas",
+        href: "/dashboard/compras/historial",
       }
     ],
   },

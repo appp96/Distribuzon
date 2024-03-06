@@ -35,11 +35,13 @@ import {
   Truck,
   NotebookTabs,
   BarChartBig,
+  ShoppingCart,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
+  shoppingcart: ShoppingCart,
   barchartbig: BarChartBig,
   truck: Truck,
   notebooktabs: NotebookTabs,

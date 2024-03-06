@@ -25,11 +25,17 @@ export function DashboardNav({ items, setOpen }: DashboardNavProps) {
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
         if (item.children && item.children.length > 0) {
+          const Icon = Icons[item.icon || "arrowRight"];
+
           return (
             <Accordion key={index} type="single" collapsible>
               <AccordionItem value={item.title}>
                 <AccordionTrigger className="group flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground hover:no-underline">
-                  <span>{item.title}</span>
+                  <span
+                    className="group flex">
+                    <Icon className="mr-2 h-4 w-4" />
+                    {item.title}
+                  </span>
                   <ChevronDownIcon className="transition-transform transform group-accordion-open:rotate-180" />
                 </AccordionTrigger>
                 <AccordionContent>
