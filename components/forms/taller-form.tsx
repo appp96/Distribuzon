@@ -81,9 +81,9 @@ export const TallerForm: React.FC<TallerFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Alta de artículo";
-  const description = initialData ? "Edit a product." : "Agregar artículo nuevo";
-  const toastMessage = initialData ? "Product updated." : "Articulo creado.";
+  const title = initialData ? "Edit product" : "Alta de artículo en taller";
+  const description = initialData ? "Edit a product." : "Agregar artículo nuevo taller";
+  const toastMessage = initialData ? "Product updated." : "Articulo creado en taller";
   const action = initialData ? "Save changes" : "Crear";
 
   const defaultValues = initialData

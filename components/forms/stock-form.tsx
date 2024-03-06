@@ -81,9 +81,9 @@ export const StockForm: React.FC<StockFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Alta de artículo";
-  const description = initialData ? "Edit a product." : "Agregar artículo nuevo";
-  const toastMessage = initialData ? "Product updated." : "Articulo creado.";
+  const title = initialData ? "Edit product" : "Alta de artículo en stock";
+  const description = initialData ? "Edit a product." : "Agregar artículo nuevo en stock";
+  const toastMessage = initialData ? "Product updated." : "Articulo creado en stock";
   const action = initialData ? "Save changes" : "Crear";
 
   const defaultValues = initialData

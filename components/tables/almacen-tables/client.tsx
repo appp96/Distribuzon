@@ -20,7 +20,7 @@ export const UserClient: React.FC<AlmacenClientProps> = ({ data }) => {
       <div className="flex items-start justify-between">
         <Heading
           title={`Almacen (${data.length})`}
-          description="Administración de almacén"
+          description="Administración de entradas almacén"
         />
         <Button
           className="text-xs md:text-sm"
