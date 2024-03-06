@@ -17,10 +17,6 @@ export default function Page() {
             { _id: "shirts", name: "shirts" },
             { _id: "pants", name: "pants" },
           ]}
-          unidad={[
-            { _id: "shirts", name: "shirts" },
-            { _id: "pants", name: "pants" },
-          ]}
           initialData={null}
           key={null}
         />

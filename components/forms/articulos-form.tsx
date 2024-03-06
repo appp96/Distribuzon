@@ -42,38 +42,37 @@ const ImgSchema = z.object({
 });
 export const IMG_MAX_LIMIT = 3;
 const formSchema = z.object({
-  id:z.coerce.number(),
-  name: z
+  idProducto: z
     .string()
     .min(3, { message: "El nombre debe de tener al menos 3 dígitos" }),
-  imgUrl: z
-    .array(ImgSchema)
-    .max(IMG_MAX_LIMIT, { message: "Sólo puedes subir 3 imagenes" })
-    .min(1, { message: "Tienes que subir al menos 1 imagen." }),
   codigo: z
     .string()
     .min(6, { message: "El código debe de tener al menos 6 dígitos" }),
   descripcion: z
     .string()
     .min(5, { message: "La descripción debe tener al menos 5 caracteres" }),
+  categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
+  medida: z.coerce.number(),
   precioCompra: z.coerce.number(),
   stockMin: z.coerce.number(),
-  medida: z.coerce.number(),
-  categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
   unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
+  imgUrl: z
+    .array(ImgSchema)
+    .max(IMG_MAX_LIMIT, { message: "Sólo puedes subir 3 imagenes" })
+    .min(1, { message: "Tienes que subir al menos 1 imagen." }),
 });
 
-type AlmacenFormValues = z.infer<typeof formSchema>;
+type ArticulosFormValues = z.infer<typeof formSchema>;
 
-interface AlmacenFormProps {
+interface ArticulosFormProps {
   initialData: any | null;
-  categorias: any;
+  categoria: any;
   unidad: any;
 }
 
-export const AlmacenForm: React.FC<AlmacenFormProps> = ({
+export const ArticulosForm: React.FC<ArticulosFormProps> = ({
   initialData,
-  categorias,
+  categoria,
   unidad,
 }) => {
   const params = useParams();
@@ -82,16 +81,15 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Editar artículo" : "Alta de artículo de entrada";
-  const description = initialData ? "Editar a almacén" : "Agregar artículo nuevo de entrada";
-  const toastMessage = initialData ? "Artículo actualizado" : "Articulo de entrada creado";
+  const title = initialData ? "Editar artículo" : "Alta de artículo de compra";
+  const description = initialData ? "Editar a almacén" : "Agregar artículo nuevo de compra";
+  const toastMessage = initialData ? "Artículo actualizado" : "Articulo de compra creado";
   const action = initialData ? "Guardar cambios" : "Crear";
 
   const defaultValues = initialData
     ? initialData
     : {
-        id: 1,
-        name:"",
+        idProducto: 1,
         codigo: "",
         descripcion: "",
         medidas: "",
@@ -103,12 +101,12 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
         
       };
 
-  const form = useForm<AlmacenFormValues>({
+  const form = useForm<ArticulosFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: AlmacenFormValues) => {
+  const onSubmit = async (data: ArticulosFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
@@ -118,7 +116,7 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/almacen`);
+      router.push(`/dashboard/articulos`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -140,7 +138,7 @@ export const AlmacenForm: React.FC<AlmacenFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/almacen`);
+      router.push(`/${params.storeId}/articulos`);
     } catch (error: any) {
     } finally {
       setLoading(false);

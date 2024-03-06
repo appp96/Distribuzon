@@ -30,6 +30,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 // import FileUpload from "@/components/FileUpload";
 import { useToast } from "../ui/use-toast";
 import FileUpload from "../file-upload";
+import { Table, TableHeader, TableBody, TableRow, TableCell,TableHead } from "../ui/table";
 const ImgSchema = z.object({
   fileName: z.string(),
   name: z.string(),
@@ -42,25 +43,19 @@ const ImgSchema = z.object({
 });
 export const IMG_MAX_LIMIT = 3;
 const formSchema = z.object({
-  id:z.coerce.number(),
-  name: z
+  codigoTransaccion: z
     .string()
-    .min(3, { message: "El nombre debe de tener al menos 3 dígitos" }),
-  imgUrl: z
-    .array(ImgSchema)
-    .max(IMG_MAX_LIMIT, { message: "Sólo puedes subir 3 imagenes" })
-    .min(1, { message: "Tienes que subir al menos 1 imagen." }),
-  codigo: z
+    .min(12, { message: "El código debe de tener al menos 12 dígitos" }),
+  fecha: z
     .string()
-    .min(6, { message: "El código debe de tener al menos 6 dígitos" }),
-  descripcion: z
+    .min(10, { message: "La fecha debe de tener al menos 10 dígitos" }),
+  proyecto: z
     .string()
-    .min(5, { message: "La descripción debe tener al menos 5 caracteres" }),
-  precioCompra: z.coerce.number(),
-  stockMin: z.coerce.number(),
-  medida: z.coerce.number(),
+    .min(5, { message: "El proyecto debe de tener al menos 5 dígitos" }),
+  usuario: z
+    .string()
+    .min(6, { message: "El usuario debe de tener al menos 6 dígitos" }),
   categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
-  unidad: z.string().min(1, { message: "Por favor selecciona una categoría" }),
 });
 
 type TallerFormValues = z.infer<typeof formSchema>;
@@ -68,7 +63,6 @@ type TallerFormValues = z.infer<typeof formSchema>;
 interface TallerFormProps {
   initialData: any | null;
   categorias: any;
-  unidad: any;
 }
 
 export const TallerForm: React.FC<TallerFormProps> = ({
@@ -81,25 +75,19 @@ export const TallerForm: React.FC<TallerFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Alta de artículo en taller";
-  const description = initialData ? "Edit a product." : "Agregar artículo nuevo taller";
-  const toastMessage = initialData ? "Product updated." : "Articulo creado en taller";
-  const action = initialData ? "Save changes" : "Crear";
+  const title = initialData ? "Editar orden" : "Orden de artículo";
+  const description = initialData ? "Editar a taller" : "Agregar orden nueva para taller";
+  const toastMessage = initialData ? "Orden actualizada" : "Orden creada para taller";
+  const action = initialData ? "Guardar cambios" : "Crear";
 
   const defaultValues = initialData
     ? initialData
     : {
-        id: 1,
-        name:"",
-        codigo: "",
-        descripcion: "",
-        medidas: "",
+        codigoTransaccion: "",
+        fecha:"",
+        proyecto: "",
+        usuario: "",
         categoria: "",
-        unidad:"",
-        precioCompra: 0,
-        stockMin: 0,
-        imgUrl: [],
-        
       };
 
   const form = useForm<TallerFormValues>({
@@ -147,8 +135,6 @@ export const TallerForm: React.FC<TallerFormProps> = ({
     }
   };
 
-  const triggerImgUrlValidation = () => form.trigger("imgUrl");
-
   return (
     <> 
       {/* <AlertModal
@@ -176,32 +162,16 @@ export const TallerForm: React.FC<TallerFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
-          <FormField
-            control={form.control}
-            name="imgUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Imágenes</FormLabel>
-                <FormControl>
-                  <FileUpload
-                    onChange={field.onChange}
-                    value={field.value}
-                    onRemove={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          
           <div className="md:grid md:grid-cols-3 gap-8">
           <FormField
               control={form.control}
-              name="id"
+              name="codigoTransaccion"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Id Producto</FormLabel>
+                  <FormLabel>Código de transacción</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
+                    <Input type="string" placeholder="OT-2024-XXXX" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
@@ -209,14 +179,14 @@ export const TallerForm: React.FC<TallerFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="codigo"
+              name="fecha"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Código</FormLabel>
+                  <FormLabel>Fecha</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="A00XXX"
+                      placeholder="01-01-2024"
                       {...field}
                     />
                   </FormControl>
@@ -226,14 +196,14 @@ export const TallerForm: React.FC<TallerFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="descripcion"
+              name="proyecto"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Descripción</FormLabel>
+                  <FormLabel>Proyecto</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Descripción"
+                      placeholder="Interno"
                       {...field}
                     />
                   </FormControl>
@@ -243,25 +213,12 @@ export const TallerForm: React.FC<TallerFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="precioCompra"
+              name="usuario"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Precio compra</FormLabel>
+                  <FormLabel>Usuario</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="medida"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Medida (cm) </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
+                    <Input type="string" placeholder="Juan Perez" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
@@ -300,66 +257,32 @@ export const TallerForm: React.FC<TallerFormProps> = ({
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="unidad"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Unidad</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Selecciona tipo de unidad"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {/* @ts-ignore  */}
-                      {unidad.map((unidad) => (
-                        <SelectItem key={unidad._id} value={unidad._id}>
-                          {unidad.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="precioCompra"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Precio compra </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="stockMin"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Stock mínimo </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            /> 
           </div>
+
+          <div>
+          <Table aria-label="Example static collection table">
+            <TableHeader>
+              <TableHead>Artículo</TableHead>
+              <TableHead>No.Parte</TableHead>
+              <TableHead>Cantidad</TableHead>
+              <TableHead>Unidad</TableHead>
+              <TableHead>Stock</TableHead>
+              <TableHead>Costo unitario</TableHead>
+              <TableHead>Total</TableHead>
+            </TableHeader>
+            <TableBody>
+              <TableRow key="1">
+              <Button className="bg-cyan-500 hover:bg-cyan-600 ml-auto mr-5" type="submit">
+                <Link href="./inicio">+ Artículo</Link>
+              </Button>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          </div>
+
           <Button className="bg-destructive hover:bg-destructive/90 ml-auto mr-5" type="submit">
             <Link href="./inicio">Cancelar</Link>
           </Button>

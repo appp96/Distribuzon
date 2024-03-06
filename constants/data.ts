@@ -256,6 +256,132 @@ export const salidas: Salidas[] = [
     unidad: "Pieza",
   },
 ]
+
+export type Articulos = {
+  no: number;
+  noParte: string;
+  descripcion: string;
+  categoria: string;
+  medida: string;
+  precioCompra: number;
+  edoStock: string;
+  stock: number;
+  unidad: string;
+};
+
+export const articulos: Articulos[] = [
+  {
+    no: 1,
+    noParte: "A00347",
+    descripcion: "Suaje Expediente (HOSPITAL ÁNGELES)",
+    categoria: "Suaje",
+    medida: " ",
+    precioCompra: 0.00,
+    edoStock: "Minimo",
+    stock: 1,
+    unidad: "Pieza",
+  },
+  {
+    no: 2,
+    noParte: "A00346",
+    descripcion: "HULE BOTADOR ROJO 3/8 x 3/8 x 1 1/4 | Placa 336 c/u",
+    categoria: "Materia prima",
+    medida: "3/8 x 3/8 x 1 1/4",
+    precioCompra: 3360.00,
+    edoStock: "Urgente",
+    stock: 0,
+    unidad: "Pieza",
+  },
+  {
+    no: 3,
+    noParte: "A00345",
+    descripcion: "KILO DE ROLLO CAPLE 24PTS 101cm (cAJA) | CORTE 71x50",
+    categoria: "Materia prima",
+    medida: "71x50",
+    precioCompra: 4.26,
+    edoStock: "Minimo",
+    stock: 0,
+    unidad: "Pieza",
+  },
+  {
+    no: 4,
+    noParte: "A00344",
+    descripcion: "KILO DE ROLLO CAPLE 24PTS 101cm (cAJA) | CORTE 50x71",
+    categoria: "Materia prima",
+    medida: "50x71",
+    precioCompra: 4.25,
+    edoStock: "Minimo",
+    stock: 0,
+    unidad: "Pieza",
+  },
+  {
+    no: 6,
+    noParte: "A00343",
+    descripcion: "Caja autoarmable 18x12x4.5cm (VENNER)",
+    categoria: "Suaje",
+    medida: "45x45 cm",
+    precioCompra: 2405.00,
+    edoStock: "Minimo",
+    stock: 1,
+    unidad: "Pieza",
+  },
+  {
+    no: 6,
+    noParte: "A00342",
+    descripcion: "Suaje Tira 1 al 18",
+    categoria: "Suaje",
+    medida: "40x41.6",
+    precioCompra: 2155.00,
+    edoStock: "Minimo",
+    stock: 1,
+    unidad: "Pieza",
+  },
+  {
+    no: 7,
+    noParte: "A00341",
+    descripcion: "Suaje Alma Terry hombre",
+    categoria: "Suaje",
+    medida: "45x40",
+    precioCompra: 1074.00,
+    edoStock: "Minimo",
+    stock: 1,
+    unidad: "Pieza",
+  },
+  {
+    no: 8,
+    noParte: "A00340",
+    descripcion: "Suaje Tira Terry camisa hombre",
+    categoria: "Suaje",
+    medida: "31.25x45",
+    precioCompra: 1970.00,
+    edoStock: "Minimo",
+    stock: 1,
+    unidad: "Pieza",
+  },
+  {
+    no: 9,
+    noParte: "A00339",
+    descripcion: "KILO DE ROLLO CAPLE 24PTS 101cm (cAJA) | CORTE 50x71",
+    categoria: "Materia prima",
+    medida: "71x50",
+    precioCompra: 3.73,
+    edoStock: "Minimo",
+    stock: 0,
+    unidad: "Pieza",
+  },
+  {
+    no: 10,
+    noParte: "A00338",
+    descripcion: "MARCADOR P/PINTARRON P/C MARKS",
+    categoria: "Materia prima",
+    medida: "4 colores",
+    precioCompra: 70.70,
+    edoStock: "Minimo",
+    stock: 1,
+    unidad: "Paquete",
+  },
+]
+
 export type User = {
   id: number;
   name: string;

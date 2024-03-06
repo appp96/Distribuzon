@@ -81,15 +81,15 @@ export const StockForm: React.FC<StockFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Edit product" : "Alta de artículo en stock";
-  const description = initialData ? "Edit a product." : "Agregar artículo nuevo en stock";
-  const toastMessage = initialData ? "Product updated." : "Articulo creado en stock";
-  const action = initialData ? "Save changes" : "Crear";
+  const title = initialData ? "Editar artículo" : "Alta de artículo en stock";
+  const description = initialData ? "Editar a stock" : "Agregar artículo nuevo en stock";
+  const toastMessage = initialData ? "Artículo actualizado" : "Articulo creado en stock";
+  const action = initialData ? "Guardar cambios" : "Crear";
 
   const defaultValues = initialData
     ? initialData
     : {
-      idProducto: 1,
+      idProducto: "",
       noParte:"",
       nombre: "",
       cliente: "",
@@ -97,7 +97,6 @@ export const StockForm: React.FC<StockFormProps> = ({
       precioVenta: "",
       unidad:"",
       stockMin: 0,
-      imgUrl: [],
       };
 
   const form = useForm<StockFormValues>({
@@ -145,8 +144,6 @@ export const StockForm: React.FC<StockFormProps> = ({
     }
   };
 
-  const triggerImgUrlValidation = () => form.trigger("imgUrl");
-
   return (
     <> 
       {/* <AlertModal
@@ -174,23 +171,6 @@ export const StockForm: React.FC<StockFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
-          <FormField
-            control={form.control}
-            name="imgUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Imágenes Stock</FormLabel>
-                <FormControl>
-                  <FileUpload
-                    onChange={field.onChange}
-                    value={field.value}
-                    onRemove={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <div className="md:grid md:grid-cols-3 gap-8">
           <FormField
               control={form.control}
