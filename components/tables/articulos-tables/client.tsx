@@ -19,12 +19,12 @@ export const UserClient: React.FC<ArticulosClientProps> = ({ data }) => {
     <>
       <div className="flex items-start justify-between">
         <Heading
-          title={`Almacen (${data.length})`}
-          description="Administración de entradas almacén"
+          title={`Artículos (${data.length})`}
+          description="Administración de artículos"
         />
         <Button
           className="text-xs md:text-sm"
-          onClick={() => router.push(`/dashboard/almacen/alta`)}
+          onClick={() => router.push(`/dashboard/articulos/alta`)}
         >
           <Plus className="mr-2 h-4 w-4" /> Agregar
         </Button>
