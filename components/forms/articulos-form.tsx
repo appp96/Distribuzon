@@ -275,9 +275,9 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
                     </FormControl>
                     <SelectContent>
                       {/* @ts-ignore  */}
-                      {categorias.map((category) => (
-                        <SelectItem key={category._id} value={category._id}>
-                          {category.name}
+                      {categoria.map((categoria) => (
+                        <SelectItem key={categoria._id} value={categoria._id}>
+                          {categoria.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
