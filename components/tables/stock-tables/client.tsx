@@ -18,7 +18,6 @@ export const UserClient: React.FC<StockClientProps> = ({ data }) => {
 
   return (
     <>
-    <ScrollArea className="h-full">
       <div className="flex items-start justify-between">
         <Heading
           title={`Stock (${data.length})`}
@@ -33,7 +32,6 @@ export const UserClient: React.FC<StockClientProps> = ({ data }) => {
       </div>
       <Separator />
       <DataTable searchKey="nombre" columns={columns} data={data} />
-      </ScrollArea>
     </>
   );
 };

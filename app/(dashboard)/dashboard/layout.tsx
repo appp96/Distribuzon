@@ -3,7 +3,7 @@ import Sidebar from "@/components/layout/sidebar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Distribuzón",
+  title: "Distribuzon",
   description: "Portal",
 };
 
