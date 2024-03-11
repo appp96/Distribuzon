@@ -1,10 +1,10 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
-import { Articulos } from "@/constants/data";
+import { Historial } from "@/constants/data";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export const columns: ColumnDef<Articulos>[] = [
+export const columns: ColumnDef<Historial>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -29,32 +29,40 @@ export const columns: ColumnDef<Articulos>[] = [
     header: "NO",
   },
   {
-    accessorKey: "foto",
-    header: "FOTO",
+    accessorKey: "codTransaccion",
+    header: "CODIGO TRANSACCIÓN",
   },
   {
-    accessorKey: "descripcion",
-    header: "DESCRIPCIÓN",
+    accessorKey: "factura",
+    header: "FACTURA",
   },
   {
-    accessorKey: "categoria",
-    header: "CATEGORÍA",
+    accessorKey: "fecha",
+    header: "FECHA",
   },
   {
-    accessorKey: "medida",
-    header: "MEDIDA (CM)",
+    accessorKey: "noParte",
+    header: "NO.PARTE",
+  },
+  {
+    accessorKey: "articulo",
+    header: "ARTICULO",
+  },
+  {
+    accessorKey: "proveedor",
+    header: "PROVEEDOR",
+  },
+  {
+    accessorKey: "tPago",
+    header: "TIPO DE PAGO",
   },
   {
     accessorKey: "precioCompra",
     header: "PRECIO DE COMPRA",
   },
   {
-    accessorKey: "edoStock",
-    header: "ESTADO DE STOCK",
-  },
-  {
-    accessorKey: "stock",
-    header: "STOCK",
+    accessorKey: "cantidad",
+    header: "CANTIDAD",
   },
   {
     accessorKey: "unidad",

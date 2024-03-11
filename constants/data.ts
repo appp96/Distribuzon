@@ -476,6 +476,140 @@ export const articulos: Articulos[] = [
   },
 ]
 
+export type Historial = {
+  no: number;
+  codTransaccion: string;
+  factura: string;
+  fecha: string;
+  noParte: string;
+  articulo: string;
+  proveedor: string;
+  tPago: string;
+  precioCompra: number;
+  cantidad: number;
+  unidad: string;
+};
+
+export const historial: Historial[] = [
+  {
+    no: 1,
+    codTransaccion: "CO-2024-00988",
+    factura: "05153AC",
+    fecha: "2023-11-29",
+    noParte: "A00319",
+    articulo: "BOND BLANCO OFFSET-EB",
+    proveedor: "ADOSA",
+    tPago: "Efectivo",
+    precioCompra: 0.13,
+    cantidad: 1600,
+    unidad: "Pieza",
+  },
+  {
+    no: 2,
+    codTransaccion: "CO-2024-00987",
+    factura: "2031574",
+    fecha: "2024-01-10",
+    noParte: "A00276",
+    articulo: "Emplaye (Película para paletizar)",
+    proveedor: "ADOSA",
+    tPago: "Transferncia",
+    precioCompra: 111.60,
+    cantidad: 12,
+    unidad: "Pieza",
+  },
+  {
+    no: 3,
+    codTransaccion: "CO-2024-00986",
+    factura: "2031574",
+    fecha: "2024-01-10",
+    noParte: "44121503",
+    articulo: "Sobre Coin c/50",
+    proveedor: "ADOSA",
+    tPago: "Transferencia",
+    precioCompra: 28.49,
+    cantidad: 2,
+    unidad: "Caja",
+  },
+  {
+    no: 4,
+    codTransaccion: "CO-2024-00985",
+    factura: "2031574",
+    fecha: "2024-01-10",
+    noParte: "085410",
+    articulo: "Caja empaque cartón tamaño oficio",
+    proveedor: "ADOSA",
+    tPago: "Transferencia",
+    precioCompra: 15.38,
+    cantidad: 75,
+    unidad: "Pieza",
+  },
+  {
+    no: 5,
+    codTransaccion: "CO-2024-00984",
+    factura: "0000",
+    fecha: "2024-01-10",
+    noParte: "A00136",
+    articulo: "Etiqueta distribuzon 1x15",
+    proveedor: "DISTRIBUZON",
+    tPago: "Efectivo",
+    precioCompra: 0.67,
+    cantidad: 3,
+    unidad: "Pieza",
+  },
+  {
+    no: 6,
+    codTransaccion: "CO-2024-00983",
+    factura: "kl 790632",
+    fecha: "2024-01-04",
+    noParte: "A00182",
+    articulo: "SERVIBOLSA CHICA 15lt",
+    proveedor: "HEB",
+    tPago: "Efectivo",
+    precioCompra: 28.02,
+    cantidad: 5,
+    unidad: "Pieza",
+  },
+  {
+    no: 7,
+    codTransaccion: "CO-2024-00982",
+    factura: "0000",
+    fecha: "2024-01-08",
+    noParte: "A00347",
+    articulo: "Suaje expediente (HOSPITAL ÁNGELES)",
+    proveedor: "SUAJES MADRID",
+    tPago: "Transferencia",
+    precioCompra: 800.00,
+    cantidad: 1,
+    unidad: "Pieza",
+  },
+  {
+    no: 9,
+    codTransaccion: "CO-2024-00981",
+    factura: "0000",
+    fecha: "2024-01-05",
+    noParte: "A00114",
+    articulo: "Etiqueta distribuzon blanca",
+    proveedor: "DISTRIBUZON",
+    tPago: "Efectivo",
+    precioCompra: 0.67,
+    cantidad: 8,
+    unidad: "Pieza",
+  },
+  {
+    no: 10,
+    codTransaccion: "CO-2024-00980",
+    factura: "2030450",
+    fecha: "2024-01-02",
+    noParte: "A00247",
+    articulo: "Papel autocopia (CF) (DONADOR BLANCO)",
+    proveedor: "ADOSA",
+    tPago: "Efectivo",
+    precioCompra: 0.34,
+    cantidad: 1000,
+    unidad: "Pieza",
+  },
+]
+
 export type User = {
   id: number;
   name: string;
@@ -855,4 +989,3 @@ export const empleados: Empleados[] = [
     unidad: "Pieza",
   },
 ]
-

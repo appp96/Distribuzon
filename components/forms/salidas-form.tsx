@@ -110,7 +110,7 @@ export const SalidasForm: React.FC<SalidasFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/salidas`);
+      router.push(`/dashboard/almacen/salidas`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -132,7 +132,7 @@ export const SalidasForm: React.FC<SalidasFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/salidas`);
+      router.push(`/${params.storeId}/almacen/salidas`);
     } catch (error: any) {
     } finally {
       setLoading(false);

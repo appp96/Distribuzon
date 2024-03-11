@@ -42,38 +42,42 @@ const ImgSchema = z.object({
 });
 export const IMG_MAX_LIMIT = 3;
 const formSchema = z.object({
-  idProducto: z
+  ordTransaccion: z
     .string()
-    .min(3, { message: "El id de producto debe de tener al menos 3 dígitos" }),
-  codigo: z
+    .min(10, { message: "La orden de transacción debe de tener al menos 10 dígitos" }),
+  fecha: z
     .string()
-    .min(6, { message: "El código debe de tener al menos 6 dígitos" }),
-  descripcion: z
-    .string()
-    .min(5, { message: "La descripción debe tener al menos 5 caracteres" }),
-  medida: z.coerce.number(),
+    .min(8, { message: "La fecha debe de tener al menos 8 dígitos" }),
+  tPago: z.string().min(1, { message: "Por favor selecciona un tpago" }),
+  articulo: z.string().min(1, { message: "Por favor selecciona un tpago" }),
+  proveedor: z.string().min(1, { message: "Por favor selecciona un tpago" }),
+  stock: z.coerce.number(),
+  refPrecio: z.coerce.number(),
   categoria: z.string().min(1, { message: "Por favor selecciona una categoría" }),
-  unidad: z.string().min(1, { message: "Por favor selecciona una unidad" }),
+  cantidad:  z.coerce.number(),
+  totalStock: z.coerce.number(),
   precioCompra: z.coerce.number(),
-  stockMin: z.coerce.number(),
-  imgUrl: z
-    .array(ImgSchema)
-    .max(IMG_MAX_LIMIT, { message: "Sólo puedes subir 3 imagenes" })
-    .min(1, { message: "Tienes que subir al menos 1 imagen." }),
+  referencia: z
+    .string()
+    .min(10, { message: "La referencia(Factura) debe de tener al menos 10 dígitos" }),
 });
 
-type ArticulosFormValues = z.infer<typeof formSchema>;
+type HistorialFormValues = z.infer<typeof formSchema>;
 
-interface ArticulosFormProps {
+interface HistorialFormProps {
   initialData: any | null;
   categoria: any;
-  unidad: any;
+  tPago: any;
+  articulo: any;
+  proveedor: any;
 }
 
-export const ArticulosForm: React.FC<ArticulosFormProps> = ({
+export const HistorialForm: React.FC<HistorialFormProps> = ({
   initialData,
   categoria,
-  unidad,
+  tPago,
+  articulo,
+  proveedor,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -81,32 +85,34 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
-  const title = initialData ? "Editar artículo" : "Alta de artículo de compra";
-  const description = initialData ? "Editar a almacén" : "Agregar artículo nuevo de compra";
-  const toastMessage = initialData ? "Artículo actualizado" : "Articulo de compra creado";
+  const title = initialData ? "Editar artículo" : "Alta de artículo de historial";
+  const description = initialData ? "Editar a almacén" : "Agregar artículo nuevo de historial";
+  const toastMessage = initialData ? "Artículo actualizado" : "Articulo de historial creado";
   const action = initialData ? "Guardar cambios" : "Crear";
 
   const defaultValues = initialData
     ? initialData
     : {
-        idProducto: 1,
-        codigo: "",
-        descripcion: "",
-        medidas: "",
-        categoria: "",
-        unidad:"",
-        precioCompra: 0,
-        stockMin: 0,
-        imgUrl: [],
-        
+        ordTransaccion:"",
+        fecha:"",
+        tPago:"",
+        articulo:"",
+        proveedor:"",
+        stock: 1,
+        refPrecio: 1,
+        categoria:"",
+        cantidad:1,
+        totalStock:1,
+        precioCompra:1,
+        referencia:"",
       };
 
-  const form = useForm<ArticulosFormValues>({
+  const form = useForm<HistorialFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  const onSubmit = async (data: ArticulosFormValues) => {
+  const onSubmit = async (data: HistorialFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
@@ -116,7 +122,7 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
         // console.log("product", res);
       }
       router.refresh();
-      router.push(`/dashboard/compras/articulos`);
+      router.push(`/dashboard/compras/historial`);
       toast({
         variant: "destructive",
         title: "Oh no! Algo salió mal.",
@@ -138,15 +144,13 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
       setLoading(true);
       //   await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
-      router.push(`/${params.storeId}/compras/articulos`);
+      router.push(`/${params.storeId}/compras/historial`);
     } catch (error: any) {
     } finally {
       setLoading(false);
       setOpen(false);
     }
   };
-
-  const triggerImgUrlValidation = () => form.trigger("imgUrl");
 
   return (
     <> 
@@ -175,30 +179,13 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
-          <FormField
-            control={form.control}
-            name="imgUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Imágenes</FormLabel>
-                <FormControl>
-                  <FileUpload
-                    onChange={field.onChange}
-                    value={field.value}
-                    onRemove={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <div className="md:grid md:grid-cols-3 gap-8">
           <FormField
               control={form.control}
-              name="idProducto"
+              name="ordTransaccion"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Id Producto</FormLabel>
+                  <FormLabel>Orden de Transacción</FormLabel>
                   <FormControl>
                     <Input type="number" disabled={loading} {...field} />
                   </FormControl>
@@ -208,14 +195,14 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="codigo"
+              name="fecha"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Código</FormLabel>
+                  <FormLabel>Fecha</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="A00XXX"
+                      placeholder="01-01-2024"
                       {...field}
                     />
                   </FormControl>
@@ -225,29 +212,124 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
             />
             <FormField
               control={form.control}
-              name="descripcion"
+              name="tPago"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Descripción</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="Descripción"
-                      {...field}
-                    />
-                  </FormControl>
+                  <FormLabel>T.Pago</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecciona T.Pago"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {/* @ts-ignore  */}
+                      {tPago.map((tPago) => (
+                        <SelectItem key={tPago._id} value={tPago._id}>
+                          {tPago.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
               control={form.control}
-              name="medida"
+              name="articulo"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Medidas (cm)</FormLabel>
+                  <FormLabel>Articulo</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecciona articulo"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {/* @ts-ignore  */}
+                      {articulo.map((articulo) => (
+                        <SelectItem key={articulo._id} value={articulo._id}>
+                          {articulo.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="proveedor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Proveedor</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Selecciona proveedor"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {/* @ts-ignore  */}
+                      {proveedor.map((proveedor) => (
+                        <SelectItem key={proveedor._id} value={proveedor._id}>
+                          {proveedor.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="stock"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Stock</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="3" disabled={loading} {...field} />
+                    <Input type="number" disabled={loading} {...field} />
+                  </FormControl>
+                  <FormMessage /> 
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="refPrecio"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Referencia precio</FormLabel>
+                  <FormControl>
+                    <Input type="number" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
@@ -269,7 +351,7 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder="Selecciona categoría"
+                          placeholder="Selecciona categoria"
                         />
                       </SelectTrigger>
                     </FormControl>
@@ -286,87 +368,53 @@ export const ArticulosForm: React.FC<ArticulosFormProps> = ({
                 </FormItem>
               )}
             />
-<FormField
+            <FormField
               control={form.control}
-              name="unidad"
+              name="cantidad"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Unidad</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Selecciona tipo de unidad"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {/* @ts-ignore  */}
-                      {unidad.map((unidad) => (
-                        <SelectItem key={unidad._id} value={unidad._id}>
-                          {unidad.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
+                  <FormLabel>Cantidad</FormLabel>
+                  <FormControl>
+                    <Input type="number" disabled={loading} {...field} />
+                  </FormControl>
+                  <FormMessage /> 
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="totalStock"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Total Stock</FormLabel>
+                  <FormControl>
+                    <Input type="number" disabled={loading} {...field} />
+                  </FormControl>
+                  <FormMessage /> 
+                </FormItem>
+              )}
+            /> 
             <FormField
               control={form.control}
               name="precioCompra"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Precio compra</FormLabel>
+                  <FormLabel>Precio de compra</FormLabel>
                   <FormControl>
                     <Input type="number" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
               )}
-            />
+            /> 
             <FormField
               control={form.control}
-              name="stockMin"
+              name="referencia"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Stock Mínimo </FormLabel>
+                  <FormLabel>Referencia</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="precioCompra"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Precio compra </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
-                  </FormControl>
-                  <FormMessage /> 
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="stockMin"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Stock mínimo </FormLabel>
-                  <FormControl>
-                    <Input type="number" disabled={loading} {...field} />
+                    <Input type="string" placeholder="FACT-2024-XXXX" disabled={loading} {...field} />
                   </FormControl>
                   <FormMessage /> 
                 </FormItem>
