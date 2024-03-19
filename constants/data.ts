@@ -962,6 +962,190 @@ export const stock: Stock[] = [
   
 ]
 
+export type Proveedores = {
+  no: number;
+  nombre: string;
+  razonSocial: string;
+  direccion: string;
+  contacto: string;
+  telefono: number;
+};
+
+export const proveedores: Proveedores[] = [
+  {
+    no: 1,
+    nombre: "EMPAQSA",
+    razonSocial: "RICARDO MANUEL ROJAS GONZALEZ",
+    direccion: "CARPINTEROS 615 FAMA IV SANTA CATARINA",
+    contacto: "RICARDO MANUEL ROJAS rrojas@empaqsa.com.mx",
+    telefono: 0,
+  },
+  {
+    no: 2,
+    nombre: "HEB",
+    razonSocial: "SUPERMERCADOS INTERNACIONALES HEB",
+    direccion: "HIDALGO 2405 COL. OBISPADO, MTY, NL",
+    contacto: "",
+    telefono: 0,
+  },
+  {
+    no: 3,
+    nombre: "Marcos Económicos",
+    razonSocial: "Alma Guadalupe Bello Durán",
+    direccion: "M.M.DE LLANO PTE 1341 COL.CENTRO",
+    contacto: "RICARDO cuadrosmonterrey@gmail.com",
+    telefono: 8113225090,
+  },
+  {
+    no: 4,
+    nombre: "COMERCIALIZADORA GUEM SA de CV",
+    razonSocial: "COMERCIALIZADORA GUEM SA de CV",
+    direccion: "MORONES PRIETO 1500 COL. NUEVAS COLONIAS",
+    contacto: "termosmayoreomty@gmail.com",
+    telefono: 0,
+  },
+  {
+    no: 5,
+    nombre: "BIRLOS Y TORNILLOS SA DE CV",
+    razonSocial: "BIRLOS Y TORNILLOS SA DE CV",
+    direccion: "GENERAL TREVIÑO 1837 OTE MTY",
+    contacto: "Z ventas@bytnsa.com",
+    telefono: 8183420742,
+  },
+  {
+    no: 6,
+    nombre: "NISSAN TOREO",
+    razonSocial: "AUTOMOTRIZ TOREO SA DE CV",
+    direccion: "AV. ALFONSO REYES 2310 COL. BELLA VISTA",
+    contacto: "KAREN TRVIÑO karen.treviño@grupotoreo.com",
+    telefono: 8180936227,
+  },
+  {
+    no: 7,
+    nombre: "STREAM XEROX",
+    razonSocial: "STREAM DOCUMENT SA DE CV",
+    direccion: "",
+    contacto: "Alejandra Hernández alejadnra@streamdocument.com",
+    telefono: 8119909905,
+  },
+  {
+    no: 8,
+    nombre: "ALCAZAR",
+    razonSocial: "RUBI ALEXANDRA MARIANA MORIN ALCAZAR",
+    direccion: "",
+    contacto: "",
+    telefono: 0,
+  },
+  {
+    no: 9,
+    nombre: "COMERCIALIZADORA OCHO ONCE",
+    razonSocial: "COMERCIALIZADORA OCHO ONCE",
+    direccion: "ARRAMBERRI PTE 1346 COL. CENTRO",
+    contacto: "",
+    telefono: 0,
+  },
+  {
+    no: 10,
+    nombre: "BEISA 2",
+    razonSocial: "BUJES Y ESCOBILLAS INDUSTRIALES SA DE CV",
+    direccion: "",
+    contacto: "",
+    telefono: 0,
+  },
+]
+
+export type Reportes = {
+  no: number;
+  nombre: string;
+  razonSocial: string;
+  direccion: string;
+  contacto: string;
+  telefono: number;
+};
+
+export const reportes: Reportes[] = [
+  {
+    no: 1,
+    nombre: "EMPAQSA",
+    razonSocial: "RICARDO MANUEL ROJAS GONZALEZ",
+    direccion: "CARPINTEROS 615 FAMA IV SANTA CATARINA",
+    contacto: "RICARDO MANUEL ROJAS rrojas@empaqsa.com.mx",
+    telefono: 0,
+  },
+  {
+    no: 2,
+    nombre: "HEB",
+    razonSocial: "SUPERMERCADOS INTERNACIONALES HEB",
+    direccion: "HIDALGO 2405 COL. OBISPADO, MTY, NL",
+    contacto: "",
+    telefono: 0,
+  },
+  {
+    no: 3,
+    nombre: "Marcos Económicos",
+    razonSocial: "Alma Guadalupe Bello Durán",
+    direccion: "M.M.DE LLANO PTE 1341 COL.CENTRO",
+    contacto: "RICARDO cuadrosmonterrey@gmail.com",
+    telefono: 8113225090,
+  },
+  {
+    no: 4,
+    nombre: "COMERCIALIZADORA GUEM SA de CV",
+    razonSocial: "COMERCIALIZADORA GUEM SA de CV",
+    direccion: "MORONES PRIETO 1500 COL. NUEVAS COLONIAS",
+    contacto: "termosmayoreomty@gmail.com",
+    telefono: 0,
+  },
+  {
+    no: 5,
+    nombre: "BIRLOS Y TORNILLOS SA DE CV",
+    razonSocial: "BIRLOS Y TORNILLOS SA DE CV",
+    direccion: "GENERAL TREVIÑO 1837 OTE MTY",
+    contacto: "Z ventas@bytnsa.com",
+    telefono: 8183420742,
+  },
+  {
+    no: 6,
+    nombre: "NISSAN TOREO",
+    razonSocial: "AUTOMOTRIZ TOREO SA DE CV",
+    direccion: "AV. ALFONSO REYES 2310 COL. BELLA VISTA",
+    contacto: "KAREN TRVIÑO karen.treviño@grupotoreo.com",
+    telefono: 8180936227,
+  },
+  {
+    no: 7,
+    nombre: "STREAM XEROX",
+    razonSocial: "STREAM DOCUMENT SA DE CV",
+    direccion: "",
+    contacto: "Alejandra Hernández alejadnra@streamdocument.com",
+    telefono: 8119909905,
+  },
+  {
+    no: 8,
+    nombre: "ALCAZAR",
+    razonSocial: "RUBI ALEXANDRA MARIANA MORIN ALCAZAR",
+    direccion: "",
+    contacto: "",
+    telefono: 0,
+  },
+  {
+    no: 9,
+    nombre: "COMERCIALIZADORA OCHO ONCE",
+    razonSocial: "COMERCIALIZADORA OCHO ONCE",
+    direccion: "ARRAMBERRI PTE 1346 COL. CENTRO",
+    contacto: "",
+    telefono: 0,
+  },
+  {
+    no: 10,
+    nombre: "BEISA 2",
+    razonSocial: "BUJES Y ESCOBILLAS INDUSTRIALES SA DE CV",
+    direccion: "",
+    contacto: "",
+    telefono: 0,
+  },
+]
+
 export type Empleados = {
   id: number;
   codigo: string;
