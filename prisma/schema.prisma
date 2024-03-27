@@ -1,3 +1,7 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -9,51 +13,47 @@ model User {
   name  String?
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model Articulo {
-  id                    Int      @id @default(autoincrement())
-  codigo                String
-  num_articulo          String
-  descripcion           String
-  categoria             String
-  foto                  String
-  precio_ref            Int
-  costo_unitario        Int
-  unidad                String
-  medidas               String
-  stock_min             Int
-  stock                 Int
-  usuario_creado        String
-  fecha_creacion        DateTime
-  usuario_actualizado   String
-  fecha_actualizacion   DateTime
+  id                  Int       @id @default(autoincrement())
+  codigo              String
+  num_articulo        String
+  descripcion         String
+  categoria           String
+  foto                String
+  precio_ref          Int
+  costo_unitario      Int
+  unidad              String
+  medidas             String
+  stock_min           Int
+  stock               Int
+  usuario_creado      String?
+  fecha_creacion      DateTime?
+  usuario_actualizado String?
+  fecha_actualizacion DateTime?
 }
 
 model Categoria {
-  id                    Int     @id @default(autoincrement())
-  categoria             String
+  id        Int    @id @default(autoincrement())
+  categoria String
 }
 
-model unidad {
-  id                    Int @id @default(autoincrement())
-  descripcion                String
+model Unidad {
+  id          Int    @id @default(autoincrement())
+  descripcion String
 }
 
-model Proveedor{
-  id                    Int     @id @default(autoincrement())
-  nombre                String
-  razon_social          String
-  direccion             String
-  contacto              String
-  correo                String
-  telefono              Int
-  extension             String
-  web                   String
-  usuario_creado        String
-  fecha_creacion        DateTime
-  usuario_actualizado   String
-  fecha_actualizacion   DateTime
+model Proveedor {
+  id                  Int       @id @default(autoincrement())
+  nombre              String
+  razon_social        String
+  direccion           String
+  contacto            String
+  correo              String
+  telefono            Int
+  extension           String
+  web                 String
+  usuario_creado      String?
+  fecha_creacion      DateTime?
+  usuario_actualizado String?
+  fecha_actualizacion DateTime?
 }
